@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
 
+        String separator = "--------------------\n";
+
         List<Employee> employees = new ArrayList<>();
         employees.add(new Employee("Maria", LocalDate.of(2000, 10, 18), new BigDecimal("2009.44"), "Operator"));
         employees.add(new Employee("João", LocalDate.of(1900, 5, 12), new BigDecimal("2284.30"), "Operator"));
@@ -28,7 +30,9 @@ public class Main {
         employees.removeIf(e -> e.getName().equals("João"));
 
         // imprime todos os funcionários
+        System.out.println(separator);
         employees.forEach(e -> System.out.println(e.toString()));
+        System.out.println(separator);
 
         // aumenta o salário de todos os funcionários em 10%
         employees.forEach(e -> e.setSalary(e.getSalary().multiply(new BigDecimal("1.10"))));
@@ -42,11 +46,13 @@ public class Main {
             System.out.println("Função: " + role);
             employeeList.forEach(System.out::println);
         });
+        System.out.println(separator);
 
         // Imprimir funcionários que fazem aniversário em Outubro e Dezembro
         employees.stream()
                 .filter(e -> e.getBirthDate().getMonthValue() == 10 || e.getBirthDate().getMonthValue() == 12)
                 .forEach(System.out::println);
+        System.out.println(separator);
 
         // Imprimir funcionário com maior idade
         Employee oldestEmployee = employees.stream()
@@ -57,6 +63,7 @@ public class Main {
             System.out.println("Funcionário mais velho: " + oldestEmployee.getName() + ", Idade: " +
                     Period.between(oldestEmployee.getBirthDate(), LocalDate.now()).getYears());
         }
+        System.out.println(separator);
 
         // Imprimir lista de funcionários por ordem alfabética
         employees.stream()
@@ -68,6 +75,7 @@ public class Main {
                 .map(Employee::getSalary)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         System.out.println("Total dos salários: " + totalSalaries);
+        System.out.println(separator);
 
         // Imprimir quantos salários mínimos ganha cada funcionário
         final BigDecimal minimumWage = new BigDecimal("1212.00");
@@ -75,5 +83,6 @@ public class Main {
             BigDecimal numberOfMinimumWages = e.getSalary().divide(minimumWage, 2, BigDecimal.ROUND_HALF_UP);
             System.out.println(e.getName() + " ganha " + numberOfMinimumWages + " salários mínimos.");
         });
+        System.out.println(separator);
     }
 }
