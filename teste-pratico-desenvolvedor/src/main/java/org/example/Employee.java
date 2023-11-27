@@ -1,7 +1,11 @@
 package org.example;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Employee extends Person {
 
@@ -32,11 +36,17 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "name='" + getName() + '\'' +
-                ", birthDate=" + getBirthDate() +
-                ", salary=" + salary +
-                ", role='" + role + '\'' +
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
+        symbols.setGroupingSeparator('.');
+        symbols.setDecimalSeparator(',');
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00", symbols);
+
+        return "Funcionário{" +
+                "nome='" + getName() + '\'' +
+                ", data de nascimento=" + getBirthDate().format(dateFormatter) +
+                ", salário=" + decimalFormat.format(salary) +
+                ", função='" + role + '\'' +
                 '}';
     }
 }
