@@ -1,7 +1,3 @@
-# Teste Prático de Programação - Iniflex
-
-Este repositório contém a minha solução para o Teste Prático de Programação da Iniflex. O projeto foi desenvolvido em Java, utilizando a versão 17 do JDK. Este desafio foi uma oportunidade excelente para demonstrar minhas habilidades de programação e pensamento lógico.
-
 ## Visão Geral do Projeto
 
 O objetivo do projeto era desenvolver um sistema para gerenciar informações de funcionários. As principais funcionalidades implementadas incluem:
